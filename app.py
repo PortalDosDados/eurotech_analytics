@@ -132,13 +132,7 @@ df_agg_mean = aggregate_all_means(df_filtrado, freq=freq)
 # -------------------------------
 # KPIs
 # -------------------------------
-
-
-def kpi_centered(label, value, delta=None):
-    c1, c2, c3 = st.columns([1, 2, 1])
-    with c2:
-        st.metric(label, value, delta)
-
+col1, col2, col3, col4 = st.columns(4)
 
 if not df_agg.empty:
     df_agg = df_agg.round(2)
@@ -164,11 +158,11 @@ else:
     media_corrente, _ = calcular_kpi(df_filtrado, "corrente")
 
 
-# KPIs centralizados (mobile friendly)
-kpi_centered("🌡️ Temp Motor", fmt(media_temp), f"Max {fmt(max_temp)}")
-kpi_centered("📳 Vibração", fmt(media_vib), f"Max {fmt(max_vib)}")
-kpi_centered("⚡ Tensão", fmt(media_tensao))
-kpi_centered("🔌 Corrente", fmt(media_corrente))
+# KPIs (CORRIGIDO)
+col1.metric("🌡️ Temp Motor", fmt(media_temp), f"Max {fmt(max_temp)}")
+col2.metric("📳 Vibração", fmt(media_vib), f"Max {fmt(max_vib)}")
+col3.metric("⚡ Tensão", fmt(media_tensao))
+col4.metric("🔌 Corrente", fmt(media_corrente))
 
 
 # -------------------------------
