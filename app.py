@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import sqlite3
+import os
 
 # -------------------------------
 # CONFIG
@@ -91,6 +92,12 @@ if df.empty:
 # -------------------------------
 # HEADER
 # -------------------------------
+
+col1, col2, col3 = st.columns([1, 1, 1])
+
+with col2:
+    st.image("assets/banner_new.png", width=600)
+
 st.title("🛩️ Painel de Bordo - Monitoramento de Motor")
 
 
@@ -215,4 +222,3 @@ if num_cols:
     df_display.loc[:, num_cols] = df_display[num_cols].round(2)
 
 st.dataframe(df_display, height=200)
-
